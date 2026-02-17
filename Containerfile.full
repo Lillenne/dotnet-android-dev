@@ -1,0 +1,20 @@
+FROM avalonia-dev
+
+# Download and install Android command-line tools
+RUN wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O /tmp/cmdline-tools.zip && \
+    unzip /tmp/cmdline-tools.zip -d /tmp && \
+    mkdir -p /opt/android-sdk/cmdline-tools && \
+    mv /tmp/cmdline-tools /opt/android-sdk/cmdline-tools/latest && \
+    rm /tmp/cmdline-tools.zip
+
+# Accept licenses and install Android SDK components
+RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses && \
+    /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager \
+        "platform-tools" \
+        "platforms;android-36" \
+        "build-tools;36.0.0" \
+        "cmdline-tools;latest"
+
+WORKDIR /workspace
+
+ENTRYPOINT ["/bin/bash"]

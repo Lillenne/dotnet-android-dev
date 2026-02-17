@@ -41,6 +41,24 @@ dotnet build
 - GitHub Copilot CLI
 - Git
 
+## Full Image (with Android SDK)
+
+For a self-contained image with Android SDK 36 pre-installed:
+
+```bash
+# Build the full image (builds on avalonia-dev)
+podman build -t avalonia-dev-full -f Containerfile.full .
+
+# Run with the helper script
+./run-full.sh                    # Prompts for directory (defaults to current dir)
+./run-full.sh /path/to/project   # Use specific directory
+
+# Or run manually
+podman run -it -v /path/to/project:/workspace avalonia-dev-full
+```
+
+This image includes Android SDK 36, platform-tools, and build-tools, so you don't need to mount `/opt/android-sdk`.
+
 ## Environment Variables
 
 - `ANDROID_HOME=/opt/android-sdk` — mount your SDK here
