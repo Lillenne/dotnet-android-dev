@@ -12,8 +12,7 @@ RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses && \
     /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager \
         "platform-tools" \
         "platforms;android-36" \
-        "build-tools;36.0.0" \
-        "cmdline-tools;latest"
+        "build-tools;36.0.0"
 
 WORKDIR /workspace
 

@@ -20,8 +20,10 @@ RUN wget https://packages.microsoft.com/config/debian/13/packages-microsoft-prod
     apt-get install -y dotnet-sdk-10.0 && \
     rm -rf /var/lib/apt/lists/*
 
+
 # Install .NET workloads for Android, WASM, and Desktop
 RUN dotnet workload install android wasm-tools wasm-experimental
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # Android SDK environment (mounted at runtime via -v /opt/android-sdk:/opt/android-sdk)
 ENV ANDROID_HOME=/opt/android-sdk
