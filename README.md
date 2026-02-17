@@ -10,7 +10,14 @@ podman build -t avalonia-dev -f Containerfile .
 
 ## Run the Container
 
-Mount your project and Android SDK:
+Use the provided script:
+
+```bash
+./run.sh                    # Prompts for directory (defaults to current dir)
+./run.sh /path/to/project   # Use specific directory
+```
+
+Or manually mount your project and Android SDK:
 
 ```bash
 podman run -it \
@@ -30,7 +37,7 @@ dotnet build
 
 - .NET SDK 10.0
 - Workloads: `android`, `wasm-tools`, `wasm-experimental`
-- OpenJDK 17
+- OpenJDK 21
 - GitHub Copilot CLI
 - Git
 
